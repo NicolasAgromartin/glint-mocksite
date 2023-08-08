@@ -1,22 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: 'Poppins', sans-serif;
+@font-face {
+  font-family: Quicsand;
+  src: url('../../public/font/Montserrat-VariableFont_wght.ttf');
 }
 
 
-input, textarea {
-  border: none; 
-  outline: none;
-  background: none;
-  
-}
-
-@media screen and (min-width:800px) {
+/* @media screen and (min-width:800px) {
   ::-webkit-scrollbar {
     width: 10px;
     z-index: 100;
@@ -34,5 +27,5 @@ input, textarea {
   ::-webkit-scrollbar-thumb:hover {
     background: #1868C3;
   }
+} */
 
-}

@@ -1,52 +1,32 @@
-// context
-import { useHeaderContext } from "./context/HeaderContextProvider";
-// icons
-import { IoMenuOutline, IoCloseOutline } from 'react-icons/io5';
+
+// react-icons
+import { HiBars3 } from 'react-icons/hi2';
 // react
-import { useRef } from "react";
-
-
-
+import { useState } from 'react';
+// components
+import Menu from './Menu';
 
 export default function Header() {
 
-  const headerRef = useRef(null);
-  const { isOpen, toggleMenu, prevScrollPosition, setPrevScrollPosition } = useHeaderContext();
+  const [ menuOpen, setMenuOpen ] = useState(false);
+  function toggleMenu() {
+    setMenuOpen(!menuOpen)
+  }
 
-
-  window.addEventListener('scroll',() =>{
-    document.documentElement.scrollTop > prevScrollPosition ?
-    (headerRef.current.style.top = '-100px')
-      :
-    (headerRef.current.style.top = '0')
-
-    setPrevScrollPosition( document.documentElement.scrollTop)
-  })
-
-
+  const [ scrollDown, setScrollDown ] = useState(false);
+  window.addEventListener('scroll', () => 
+    window.scrollY > 50? setScrollDown(true) : setScrollDown(false)
+  ) 
 
 
   return (
-    <header ref={headerRef} className='w-full h-16 top-0 left-0 fixed flex justify-end items-center p-4 bg-background z-50 
-      border-b-[1px] border-b-border
-      transition-all ease-linear'>
-      <IoMenuOutline onClick={toggleMenu} className="text-4xl sm:hidden"  />
+    <header className='fixed top-0 right-0 w-1/2 h-24 flex justify-end items-center pr-6 z-30 '>
+      <button className={`group flex gap-2 justify-center items-center text-xs ${scrollDown? 'bg-black' : 'bg-transparent'} transition-colors duration-500 px-2`} onClick={toggleMenu}>
+        <span className='text-primary transition-colors duration-[.7s] tracking-widest font-bold group-hover:text-white '>MENU</span>
+          <HiBars3 className='text-4xl text-white' />
+      </button>
 
-      <menu className={`
-        transition-all
-        absolute top-0  w-screen h-screen flex flex-col justify-evenly items-center bg-background
-        sm:static sm:w-full sm:h-full sm:flex-row sm:bg-none
-        md:w-1/2
-        ${isOpen? 'right-0' : '-right-full'}`}>
-
-        <span className="w-full h-15 flex justify-end items-center absolute top-0 left-0 p-4  sm:hidden">
-          <IoCloseOutline onClick={toggleMenu} className="text-4xl" />
-        </span>
-        <a href="#Home" onClick={toggleMenu}> Inicio </a>
-        <a href="#About" onClick={toggleMenu}> Acerca de mi </a>
-        <a href="#Briefcase" onClick={toggleMenu}> Portafolio </a>
-        <a href="#Contact" onClick={toggleMenu}> Contacto </a>
-      </menu>
+      <Menu menuOpen={menuOpen} toggleMenu={toggleMenu} />        
     </header>
   )
 }

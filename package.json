@@ -1,5 +1,5 @@
 {
-  "name": "briefcase",
+  "name": "glint-page",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
-    "framer-motion": "^10.12.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
-    "react-intersection-observer": "^9.4.4",
-    "styled-components": "^5.3.11"
+    "react-loader-spinner": "^5.3.4",
+    "styled-components": "^5.3.11",
+    "swiper": "^10.0.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

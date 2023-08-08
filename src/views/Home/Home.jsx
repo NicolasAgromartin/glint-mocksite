@@ -1,58 +1,53 @@
-// styled-components
-import { Logo } from '../../styled-components/styled-logo';
+// content
+import { homeContent } from "./content";
+// icons
+import { socialMediaIcons } from '../../../public/icons/socialMedia.icons';
 import { ActionButton } from "../../styled-components/styled-buttons";
-import { Rectangles } from "../../styled-components/styled-decorations";
-// react-icons
-import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
-import { MediaLinks } from './styled-components/styled-media';
-// framer motion
-import { motion } from 'framer-motion';
-import { opacity } from '../../assets/variants';
+import { RiArrowDownSLine } from 'react-icons/ri';
+// logo
+import logo from './logo.png'
+
 
 export default function Home() {
-
   return (
-    <motion.div className="w-full min-h-screen flex flex-col justify-start items-center gap-4 p-4 pt-32 xl:pt-48 relative" id='Home' initial='hidden' animate='visible' transition={{ staggerChildren: .4 }} >
+    <div id="Home" className="w-full min-h-screen bg-hero bg-center bg-cover bg-fixed flex justify-start items-start">
 
-      <motion.div className="w-32 h-32  
-        sm:w-40 sm:h-40
-        md:w-48 md:h-48 
-        lg:w-48 lg:h-48 
-        xl:w-64 xl:h-64
-        z-10" variants={opacity}>
-        <Logo background='blue' />
-      </motion.div>
+      <div className="w-full min-h-screen backdrop-brightness-[.30] flex flex-col justify-center items-center text-center 
+      sm:text-left pt-32 pb-20">
 
-      <div className="w-full h-40 flex flex-col justify-center items-center gap-1 z-10">
-        <motion.h1 variants={opacity} className="text-2xl font-normal sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl ">
-          Nicolas Agromartin
-        </motion.h1>
-        <motion.h2 className="font-light sm:text-xl" variants={opacity}>
-          Frontend web developer 
-        </motion.h2>
+        <div className=" absolute top-0 left-0 w-full h-24 flex justify-between items-center pl-10 ">
+          <a href="#Home" target="__blank">
+            <img src={logo} alt="" className='w-20 ' />
+          </a> 
+        </div>
+
+        <div className="w-[clamp(90%,450px,600px)] min-h-[500px] flex flex-col justify-evenly items-center sm:items-start gap-8 md:px-[10%] md:py-[5%] ">
+          <h3 className="text-white/80 text-[min(5vw,16px)] tracking-[3px] font-bold">{homeContent.h3}</h3>
+          
+          <p className="w-[95vw] h-[50%] sm:w-[60vw] flex text-[clamp(30px,6vw,60px)] font-bold  sm:text-left sm:w-30vw ">{homeContent.h1}</p>
+
+          <div className="w-full flex justify-center items-center flex-wrap gap-6 sm:justify-start pb-20">
+            <ActionButton href="#Contact"> Start a project </ActionButton>
+            <ActionButton href="#About"> More about us </ActionButton>
+          </div>
+
+
+          <div className="w-full h-24 absolute bottom-0 right-0 flex justify-end items-start gap-2 pr-12 ">
+            <a href="" className="flex gap-2 justify-start items-center tracking-[4px] uppercase font-bold text-[10px]">
+              <RiArrowDownSLine className="text-primary text-2xl " /> Scroll Down
+            </a>
+            <span className="w-[2px] h-full bg-primary" />
+          </div>
+
+          <aside className="hidden absolute right-0 top-0 sm:flex flex-col justify-center items-center gap-8 w-20 h-full ">
+            {socialMediaIcons.map((Social, index) => 
+              <a href='#' target='__blank' key={index} className='hover:text-white hover:scale-110 
+              transition-color duration-500  p-2 rounded-full border-[2px] border-white' > 
+                <Social.icon/> 
+              </a>)}            
+          </aside>
+        </div>
       </div>
-
-      <ActionButton href='#About' className="z-10" variant='blue' 
-        variants={opacity} as={motion.a} whileHover={{scale: 1.1}} whileTap={{scale:.9}} >
-        Sobre mi
-      </ActionButton>
-
-      <motion.div className='absolute bottom-0 left-0 w-full h-1 flex justify-evenly sm:bottom-40' variants={opacity} >
-        <Rectangles orientation='left' className='bottom-0 -left-32 lg:left-0'  />
-        <Rectangles orientation='right' className='hidden bottom-0 -right-32 lg:right-0 sm:flex' /> 
-      </motion.div>
-    
-      <span className='w-full flex justify-end sm:justify-center'>
-        <MediaLinks as={motion.div} variants={opacity}>
-          <motion.a href="https://www.linkedin.com/in/nicolas-agromartin/" target='__blank'  whileHover={{color:'#1868C3'}}> 
-            <AiFillLinkedin  />
-          </motion.a>
-
-          <motion.a href="https://github.com/NicolasAgromartin" target='__blank' whileHover={{color:'#1868C3'}}>
-            <AiFillGithub  />
-          </motion.a>
-        </MediaLinks>
-      </span>
-    </motion.div>
+    </div>
   )
 }

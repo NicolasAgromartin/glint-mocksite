@@ -1,77 +1,34 @@
-// components
-import SkillCard from './components/SkillCard';
-// styled-components
-import { Logo } from '../../styled-components/styled-logo';
-import { Squares } from '../../styled-components/styled-decorations';
-// techs
-const techs = ['React', 'CSS', 'HTML','Typescript', 'Styled-components', 'Tailwind', 'Scss', 'Canva',];
-// react
-import  { useEffect } from 'react'; 
-// framer motion
-import { motion, useAnimation } from 'framer-motion';
-// variants
-import { opacity, fromAbove, fromLeft } from '../../assets/variants';
-// reactintersectionobserver
-import { useInView } from "react-intersection-observer";
+// content
+import { content, stats } from "./about.content";
+
 
 export default function About() {
-
-  const controls = useAnimation();
-  const [ ref, inView ] = useInView();
-
-  useEffect(() => {
-    inView && controls.start('visible')
-  },[controls , inView])
-
-
-    
   return (
-    <div className="z-10 w-full min-h-screen flex flex-row flex-wrap p-4 gap-8 justify-center items-center 
-      lg:gap-0 lg:items-start lg:pt-32 lg:pl-12 lg:pr-12 xl:pl-24 xl:pr-24 " id='About'>
+    <div id="About" className="relative w-full min-h-screen bg-primary flex flex-col justify-start items-center pb-20">
 
-      <motion.div ref={ref} className="w-full lg:w-[50%] flex flex-col gap-8 p-2 sm:p-4 relative" 
-        initial='hidden' 
-        animate={controls} 
-        transition={{ staggerChildren: .4 }} >
-        <motion.h2 variants={fromLeft} className="uppercase text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Acerca de mi</motion.h2>
-        <motion.p variants={fromLeft}>Como desarrollador front end, me encanta crear interfaces limpias e intuitivas y darle vida a mis sitios y aplicaciones web usando animaciones y transiciones suaves.</motion.p>
-        
-        <div className='hidden lg:flex justify-start translate-x-[250px] translate-y-[150px] items-end w-full h-full -z-10'>
-          <motion.div className="relative" variants={opacity}>
-            <Squares />
-          </motion.div>
+      <div className="w-full h-24 absolute top-0 right-0 flex justify-end items-start gap-2 pr-12 ">
+        <span className="w-[2px] h-full bg-white" />
+      </div>
+
+      <div className="w-auto border border-transparent border-b-white/60 pt-28 flex flex-col justify-center items-center pb-10">
+        <h3 className="text-black text-[min(5vw,16px)] tracking-[3px] font-bold"> {content.h3} </h3>
+        <h1 className="text-white text-[clamp(30px,6vw,78px)] font-bold"> {content.h1} </h1>
+      </div>
+
+      <div className="w-[min(90%,1024px)] text-black flex justify-center items-center pt-12 text-center">
+        <p className="leading-[30px] md:text-xl lg:text-2xl md:leading-[40px] lg:leading-[50px]">{content.p}</p>
+      </div>
+
+    <div className="w-full flex flex-wrap justify-center items-center gap-10 pt-20">
+      {stats.map((stat,index) => (
+        <div className="p-4 font-bold flex flex-col justify-center items-center " key={index} >
+          <span className="text-[75px]">{stat.number}</span>
+          <h5 className="text-black text-xl">{stat.title}</h5>
         </div>
-      </motion.div>
+      ))}
+    </div>
+  
 
-      <motion.div ref={ref}  className="w-full lg:w-[50%] p-4 flex flex-row flex-wrap justify-center items-center gap-12 " 
-        initial='hidden'
-        animate={controls}
-        transition={{staggerChildren:.3}} >
-        <motion.h3 variants={fromAbove} className='w-full text-center sm:text-xl md:text-2xl '>Habilidades y aptitudes</motion.h3>
-        <SkillCard content='responsive' controls={controls} />
-        <SkillCard content='design' controls={controls}/>
-        <SkillCard content='clean code' controls={controls}/>
-
-        <div className='hidden xl:flex justify-end translate-x-[-200px] translate-y-[200px] items-end w-full h-full -z-10'>
-          <motion.div className="relative" variants={opacity}>
-            <Squares orientation='top' /> 
-          </motion.div>
-        </div>
-      </motion.div>
-
-      <motion.div className="w-full p-4 lg:mt-12" initial='hidden' animate={controls} transition={{staggerChildren:.2}}>
-        <motion.p className="mb-4" variants={fromLeft}>Algunas de las tecnologías y librerias que uso tanto en el desarrollo como en la planeación son : </motion.p>
-        <motion.span className='flex flex-row flex-wrap gap-2 justify-start items-center xl:w-1/2 ' transition={{staggerChildren:.3}}>
-          {techs.map( tech => (
-            <motion.div key={tech} className='m-3 flex gap-2 w-full sm:w-[200px]' variants={opacity}>
-              <span className='w-5 h-5'>
-                <Logo background='blue' />
-              </span>
-              <p className="text-sm font-light">{tech}</p>
-            </motion.div>
-          ))}
-        </motion.span>
-      </motion.div>
     </div>
   )
 }

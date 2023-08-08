@@ -10,12 +10,19 @@ export default {
   theme: {
     extend: {
       colors:{
-        'primary':'#1868C3',
+        'primary':'#39b54a',
         'contrast':'#204C7D',
-        'border':'#0B0429',
+        'black':'#0C0C0C',
         'background':'#0F172A',
-
+      },
+      fontFamily:{
+        montserrat: ['Montserrat','sans-serif'],
+      },
+      backgroundImage: {
+        'hero': "url('./src/views/Home/hero-bg.jpg')",
+        'contact': "url('./src/views/Contact/contact-bg.jpg')"
       }
+  
     },
 
   },

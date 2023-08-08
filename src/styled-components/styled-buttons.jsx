@@ -1,41 +1,32 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-const Button = styled.a`
-  border: none; outline: none;
-  background:none;
-  border-radius: 8px;
-  box-shadow: 0 0 10px 6px rgba(0,0,0, .1);
+
+export const ActionButton = styled.a`
+  width: clamp(130px, 255px, 300px); height: 50px ;
+  padding: 10px;
+
+  border: 2px solid white;
+
+  text-transform: uppercase;
+  font-size: 12px ;
+  font-weight: bold;
+  letter-spacing: 3px;
+
   display: flex;
-  justify-content: center; align-items: center;
-  font-weight: light;
-`;
+  justify-content: center;
+  align-items: center;
 
-export const ActionButton = styled(Button)`
-  padding: 1px;
-
-  background: ${ props=> props.variant === 'blue'&& '#1868C3'};
-  background: ${ props=> props.variant === 'white'&& '#fff'};
-  
-  color: ${ props=> props.variant === 'blue'&& '#fff' };
-  color: ${ props=> props.variant === 'white'&& '#1868C3' };
-
-  width: 160px; height: 2.5rem;
-  font-size: 1rem;
+  transition: all .6s;
+  &:hover {
+    background: white; 
+    color: #000;
+  }
 `
 
-export const SubmitButton = styled.button`
-  border: none; outline: none;
+export const FormButton = styled.button`
+  width: 100%; height: 50px;
+  padding: 10px;
 
-  border-radius: 8px;
-  box-shadow: 0 0 10px 6px rgba(0,0,0, .1);
-  display: flex;
-  justify-content: center; align-items: center;
-  font-weight: light;
-  padding: 1px;
-
-  background: #1868C3;
-  color: #fff;
-
-  width: 160px; height: 2.5rem;
-  font-size: 1rem;
+  background: #39B54A;
+  color: white;
 `
