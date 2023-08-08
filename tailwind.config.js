@@ -18,10 +18,10 @@ export default {
       fontFamily:{
         montserrat: ['Montserrat','sans-serif'],
       },
-      backgroundImage: {
-        'hero': "url('./src/views/Home/hero-bg.jpg')",
-        'contact': "url('./src/views/Contact/contact-bg.jpg')"
-      }
+      // backgroundImage: {
+      //   'hero': "url('./src/views/Home/hero-bg.jpg')",
+      //   'contact': "url('./src/views/Contact/contact-bg.jpg')"
+      // }
   
     },
 

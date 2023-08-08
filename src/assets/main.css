@@ -8,24 +8,10 @@
   src: url('../../public/font/Montserrat-VariableFont_wght.ttf');
 }
 
+.bg-hero {
+  background-image: url('./images/hero-bg.jpg');
+}
 
-/* @media screen and (min-width:800px) {
-  ::-webkit-scrollbar {
-    width: 10px;
-    z-index: 100;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #0B0429;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #204C7D;
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #1868C3;
-  }
-} */
-
+.bg-contact {
+  background-image: url('./images/contact-bg.jpg');
+}
